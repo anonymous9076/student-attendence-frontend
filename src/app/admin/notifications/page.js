@@ -1,6 +1,8 @@
 'use client';
 import { useCourses } from '@/hooks/useCourseSubject';
 import { useAdminNotifications, useCreateNotification, useDeleteNotification } from '@/hooks/useNotifications';
+import { useSelector } from 'react-redux';
+import { useProfile } from '@/hooks/useProfile';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
     Bell, 
@@ -13,10 +15,14 @@ import {
     AlertCircle,
     CheckCircle2
 } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ConfirmModal from '@/components/modals/ConfirmModal';
 
 export default function NotificationManagement() {
+    const { user } = useSelector((state) => state.auth);
+    const { data: profile } = useProfile();
+    const isProfessor = user?.role === 'professor';
+
     const { data: courses } = useCourses();
     const { data: notifications, isLoading } = useAdminNotifications();
     const createMutation = useCreateNotification();
@@ -31,6 +37,16 @@ export default function NotificationManagement() {
         audience: 'all',
         courseId: ''
     });
+
+    const professorCourseName = isProfessor ? profile?.professor?.department : null;
+    const professorCourseObj = courses?.data?.find(c => c.name === professorCourseName);
+    const professorCourseId = professorCourseObj?._id || '';
+
+    useEffect(() => {
+        if (isModalOpen && isProfessor && professorCourseId) {
+            setFormData(prev => ({ ...prev, audience: 'course', courseId: professorCourseId }));
+        }
+    }, [isModalOpen, isProfessor, professorCourseId]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -107,12 +123,14 @@ export default function NotificationManagement() {
                                         Sent on {new Date(n.createdAt).toLocaleString()}
                                     </p>
                                 </div>
-                                <button 
-                                    onClick={() => handleDeleteClick(n)}
-                                    className="p-3 rounded-2xl bg-red-500/10 text-red-500 opacity-0 group-hover:opacity-100 transition-all hover:bg-red-500 hover:text-white"
-                                >
-                                    <Trash2 className="w-5 h-5" />
-                                </button>
+                                { (n.createdBy === user?._id || n.createdBy === user?.id) && (
+                                    <button 
+                                        onClick={() => handleDeleteClick(n)}
+                                        className="p-3 rounded-2xl bg-red-500/10 text-red-500 opacity-0 group-hover:opacity-100 transition-all hover:bg-red-500 hover:text-white"
+                                    >
+                                        <Trash2 className="w-5 h-5" />
+                                    </button>
+                                )}
                             </motion.div>
                         ))
                     )}
@@ -152,40 +170,43 @@ export default function NotificationManagement() {
                                 </h2>
 
                                 <form onSubmit={handleSubmit} className="space-y-6">
-                                    <div className="space-y-2">
-                                        <label className="text-xs font-bold text-slate-500 uppercase tracking-widest px-1">Target Audience</label>
-                                        <div className="grid grid-cols-2 gap-4">
-                                            <button 
-                                                type="button"
-                                                onClick={() => setFormData({...formData, audience: 'all'})}
-                                                className={`p-4 rounded-2xl border flex items-center justify-center gap-2 transition-all font-bold text-sm ${
-                                                    formData.audience === 'all' 
-                                                    ? 'bg-blue-600 border-blue-500 text-white shadow-lg shadow-blue-600/20' 
-                                                    : 'bg-white/5 border-white/5 text-slate-400 hover:bg-white/10'
-                                                }`}
-                                            >
-                                                <Users className="w-4 h-4" /> Global
-                                            </button>
-                                            <button 
-                                                type="button"
-                                                onClick={() => setFormData({...formData, audience: 'course'})}
-                                                className={`p-4 rounded-2xl border flex items-center justify-center gap-2 transition-all font-bold text-sm ${
-                                                    formData.audience === 'course' 
-                                                    ? 'bg-purple-600 border-purple-500 text-white shadow-lg shadow-purple-600/20' 
-                                                    : 'bg-white/5 border-white/5 text-slate-400 hover:bg-white/10'
-                                                }`}
-                                            >
-                                                <Layers className="w-4 h-4" /> Specific Course
-                                            </button>
+                                    {!isProfessor && (
+                                        <div className="space-y-2">
+                                            <label className="text-xs font-bold text-slate-500 uppercase tracking-widest px-1">Target Audience</label>
+                                            <div className="grid grid-cols-2 gap-4">
+                                                <button 
+                                                    type="button"
+                                                    onClick={() => setFormData({...formData, audience: 'all'})}
+                                                    className={`p-4 rounded-2xl border flex items-center justify-center gap-2 transition-all font-bold text-sm ${
+                                                        formData.audience === 'all' 
+                                                        ? 'bg-blue-600 border-blue-500 text-white shadow-lg shadow-blue-600/20' 
+                                                        : 'bg-white/5 border-white/5 text-slate-400 hover:bg-white/10'
+                                                    }`}
+                                                >
+                                                    <Users className="w-4 h-4" /> Global
+                                                </button>
+                                                <button 
+                                                    type="button"
+                                                    onClick={() => setFormData({...formData, audience: 'course'})}
+                                                    className={`p-4 rounded-2xl border flex items-center justify-center gap-2 transition-all font-bold text-sm ${
+                                                        formData.audience === 'course' 
+                                                        ? 'bg-purple-600 border-purple-500 text-white shadow-lg shadow-purple-600/20' 
+                                                        : 'bg-white/5 border-white/5 text-slate-400 hover:bg-white/10'
+                                                    }`}
+                                                >
+                                                    <Layers className="w-4 h-4" /> Specific Course
+                                                </button>
+                                            </div>
                                         </div>
-                                    </div>
+                                    )}
 
                                     {formData.audience === 'course' && (
                                         <div className="space-y-2">
-                                            <label className="text-xs font-bold text-slate-500 uppercase tracking-widest px-1">Select Target Course</label>
+                                            <label className="text-xs font-bold text-slate-500 uppercase tracking-widest px-1">Target Course</label>
                                             <select 
                                                 required
-                                                className="w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-3 text-white focus:outline-none"
+                                                disabled={isProfessor}
+                                                className={`w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-3 text-white focus:outline-none ${isProfessor ? 'opacity-50 cursor-not-allowed' : ''}`}
                                                 value={formData.courseId}
                                                 onChange={(e) => setFormData({...formData, courseId: e.target.value})}
                                             >
