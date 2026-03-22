@@ -1,6 +1,7 @@
 'use client';
 import { useAttendanceSummary, useStudentAttendance } from '@/hooks/useAttendance';
 import { useProfile } from '@/hooks/useProfile';
+import FullScreenLoader from '@/components/FullScreenLoader';
 import { motion } from 'framer-motion';
 import { 
     Activity, 
@@ -27,16 +28,7 @@ export default function StudentAttendancePage() {
     const subjects = summary?.data?.subjectWise || [];
     const history = records?.data || [];
 
-    if (loadingSummary || loadingRecords) {
-        return (
-            <div className="min-h-screen flex items-center justify-center bg-slate-950">
-                <div className="text-center">
-                    <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-                    <p className="text-slate-400 font-bold tracking-[0.2em] text-[10px] uppercase">Syncing Metrics</p>
-                </div>
-            </div>
-        );
-    }
+    if (loadingSummary || loadingRecords) return <FullScreenLoader message="Syncing Metrics..." />;
 
     const StatCard = ({ label, value, icon: Icon, color, subText, span = 'col-span-1' }) => (
         <motion.div 

@@ -2,6 +2,7 @@
 import { useSubjects } from '@/hooks/useCourseSubject';
 import { useAttendanceSummary } from '@/hooks/useAttendance';
 import { useProfile } from '@/hooks/useProfile';
+import FullScreenLoader from '@/components/FullScreenLoader';
 import { motion } from 'framer-motion';
 import { GraduationCap, Book, Info, Calendar as CalendarIcon, BarChart3, ArrowUpRight, Clock, Code, Layers, Activity, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
@@ -17,16 +18,7 @@ export default function MyCoursePage() {
     const subjects = subjectsData?.data || [];
     const overallAttendance = summaryData?.data?.overall?.percentage || 0;
 
-    if (loadingProfile || loadingSubjects) {
-        return (
-            <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white">
-                <div className="text-center">
-                    <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4 shadow-[0_0_15px_rgba(59,130,246,0.5)]" />
-                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Retrieving Curriculum</p>
-                </div>
-            </div>
-        );
-    }
+    if (loadingProfile || loadingSubjects) return <FullScreenLoader message="Retrieving Curriculum..." />;
 
     return (
         <div className="min-h-screen pt-12 pb-24 px-6 bg-slate-950 text-white relative overflow-hidden font-sans">

@@ -1,5 +1,6 @@
 'use client';
 import { useCourses, useCreateCourse, useUpdateCourse, useDeleteCourse } from '@/hooks/useCourseSubject';
+import FullScreenLoader from '@/components/FullScreenLoader';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
     Plus, 
@@ -83,13 +84,7 @@ export default function CourseManagementPage() {
         c.code.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
-    if (isLoading) {
-        return (
-            <div className="min-h-screen flex items-center justify-center bg-slate-950">
-                <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
-            </div>
-        );
-    }
+    if (isLoading) return <FullScreenLoader message="Loading Courses..." />;
 
     return (
         <div className="min-h-screen pt-12 pb-24 px-6 bg-slate-950 text-white">

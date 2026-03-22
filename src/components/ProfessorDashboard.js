@@ -1,5 +1,6 @@
 'use client';
 import { useAdminDashboard } from '@/hooks/useDashboard';
+import FullScreenLoader from '@/components/FullScreenLoader';
 import { motion } from 'framer-motion';
 import {
     Users,
@@ -42,6 +43,8 @@ const StatCard = ({ title, value, icon: Icon, color, subValue, isLoading }) => (
 
 export default function ProfessorDashboard() {
     const { data: dashboard, isLoading } = useAdminDashboard();
+
+    if (isLoading) return <FullScreenLoader message="Loading Professor Dashboard..." />;
 
     const stats = dashboard?.data;
 

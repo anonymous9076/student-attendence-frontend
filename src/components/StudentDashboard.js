@@ -1,5 +1,6 @@
 'use client';
 import { useStudentDashboard } from '@/hooks/useDashboard';
+import FullScreenLoader from '@/components/FullScreenLoader';
 import { motion } from 'framer-motion';
 import { 
     GraduationCap, 
@@ -18,6 +19,8 @@ import NotificationFeed from '@/components/NotificationFeed';
 
 export default function StudentDashboard() {
     const { data: dashboard, isLoading } = useStudentDashboard();
+
+    if (isLoading) return <FullScreenLoader message="Loading Student Dashboard..." />;
 
     const data = dashboard?.data;
     const student = data?.student;

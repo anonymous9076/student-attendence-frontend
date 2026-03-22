@@ -1,5 +1,6 @@
 'use client';
 import { useStudents, useDeleteStudent, useUpdateStudent } from '@/hooks/useStudents';
+import FullScreenLoader from '@/components/FullScreenLoader';
 import { useCourses } from '@/hooks/useCourseSubject';
 import { useState } from 'react';
 import Link from 'next/link';
@@ -25,11 +26,7 @@ export default function StudentListPage() {
     courseId: ''
   });
 
-  if (isLoading) return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-950">
-       <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
-    </div>
-  );
+  if (isLoading) return <FullScreenLoader message="Loading Student Directory..." />;
 
   const filteredStudents = students?.data?.filter(s => 
     s.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
