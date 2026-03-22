@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '@/redux/slices/authSlice';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { LogOut, User, Users, Home, LayoutDashboard, Calendar, ClipboardList, BookOpen, GraduationCap, Bell } from 'lucide-react';
+import { LogOut, User, Users, Home, LayoutDashboard, Calendar, ClipboardList, BookOpen, GraduationCap, Bell, Library } from 'lucide-react';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -25,7 +25,7 @@ export default function Navbar() {
         { name: 'Students', href: '/admin/students', icon: Users, show: user?.role === 'admin' },
         { name: 'Professors', href: '/admin/professors', icon: GraduationCap, show: user?.role === 'admin' },
         { name: 'Courses', href: '/admin/courses', icon: BookOpen, show: user?.role === 'admin' },
-        { name: 'Subjects', href: '/admin/subjects', icon: ClipboardList, show: user?.role === 'admin' },
+        { name: 'Subjects', href: '/admin/subjects', icon: Library, show: user?.role === 'admin' },
         { name: 'Records', href: '/admin/attendance/records', icon: ClipboardList, show: user?.role === 'admin' || user?.role === 'professor' },
         { name: 'Mark Attendance', href: '/admin/attendance/mark', icon: Calendar, show: user?.role === 'professor' },
         { name: 'Announcements', href: '/admin/notifications', icon: Bell, show: user?.role === 'admin' || user?.role === 'professor' },
