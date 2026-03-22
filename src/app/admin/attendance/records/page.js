@@ -15,6 +15,7 @@ import {
     User,
     Book
 } from 'lucide-react';
+import DatePicker from '@/components/DatePicker';
 
 export default function AttendanceRecordsPage() {
     const { user } = useSelector((state) => state.auth);
@@ -108,11 +109,9 @@ export default function AttendanceRecordsPage() {
                         </select>
                     </div>
 
-                    <div className="space-y-2">
-                        <label className="text-xs font-bold text-slate-500 uppercase tracking-widest px-1">Date</label>
-                        <input 
-                            type="date" 
-                            className="w-full bg-slate-900 border border-white/5 rounded-xl px-4 py-3 text-white focus:outline-none"
+                    <div className="w-full">
+                        <DatePicker 
+                            label="Date"
                             value={filters.date}
                             onChange={(e) => handleFilterChange('date', e.target.value)}
                         />

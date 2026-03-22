@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { UserPlus, User, ArrowLeft, Mail, Phone, Calendar, MapPin, GraduationCap, ChevronRight, UserCircle, Lock, Eye, EyeOff } from 'lucide-react';
 import Link from 'next/link';
+import DatePicker from '@/components/DatePicker';
 
 const Input = ({ label, icon: Icon, ...props }) => (
   <div className="space-y-1.5">
@@ -126,7 +127,7 @@ export default function AddStudentPage() {
 
             <Input label="Contact Phone" type="tel" icon={Phone} value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} required placeholder="+1 (555) 000-0000" />
             
-            <Input label="Date of Birth" type="date" icon={Calendar} value={formData.dateOfBirth} onChange={(e) => setFormData({...formData, dateOfBirth: e.target.value})} required />
+            <DatePicker label="Date of Birth" value={formData.dateOfBirth} onChange={(e) => setFormData({...formData, dateOfBirth: e.target.value})} required />
             
             <div className="space-y-1.5">
               <label className="text-sm font-semibold text-slate-400 ml-1">Gender Identity</label>

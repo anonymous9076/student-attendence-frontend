@@ -16,6 +16,7 @@ import {
     Search,
     User
 } from 'lucide-react';
+import DatePicker from '@/components/DatePicker';
 
 export default function MarkAttendancePage() {
     const { user } = useSelector((state) => state.auth);
@@ -161,18 +162,11 @@ export default function MarkAttendancePage() {
                                 </div>
                             </div>
 
-                            <div>
-                                <label className="block text-sm font-bold text-slate-400 mb-2 uppercase tracking-widest">Select Date</label>
-                                <div className="relative">
-                                    <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
-                                    <input 
-                                        type="date" 
-                                        className="w-full bg-slate-900 border border-white/5 rounded-xl px-12 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/40 transition-all"
-                                        value={date}
-                                        onChange={(e) => setDate(e.target.value)}
-                                    />
-                                </div>
-                            </div>
+                            <DatePicker 
+                                label="Select Date"
+                                value={date}
+                                onChange={(e) => setDate(e.target.value)}
+                            />
 
                             <button 
                                 onClick={handleSubmit}
