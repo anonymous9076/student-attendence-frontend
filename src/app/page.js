@@ -1,6 +1,5 @@
 'use client';
 import { useSelector } from 'react-redux';
-import { motion } from 'framer-motion';
 import { Users, User, BookOpen, Calendar, GraduationCap, ArrowRight, ShieldCheck, Zap, Globe, BarChart, LayoutDashboard, ChevronRight, CheckCircle2 } from 'lucide-react';
 import Link from 'next/link';
 import AdminDashboard from '@/components/AdminDashboard';
@@ -8,13 +7,8 @@ import ProfessorDashboard from '@/components/ProfessorDashboard';
 import StudentDashboard from '@/components/StudentDashboard';
 
 const FeatureCard = ({ title, desc, icon: Icon, delay, color }) => (
-  <motion.div 
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ delay, duration: 0.5 }}
-    whileHover={{ y: -8 }}
-    className="relative group p-8 rounded-[2rem] bg-slate-900/40 border border-white/5 hover:border-white/10 transition-all duration-500 overflow-hidden"
+  <div 
+    className="relative group p-8 rounded-[2rem] bg-slate-900/40 border border-white/5 hover:border-white/10 transition-all duration-500 overflow-hidden transform hover:-translate-y-2"
   >
     <div className={`absolute -right-12 -top-12 w-40 h-40 bg-${color}-500/10 blur-3xl group-hover:bg-${color}-500/20 transition-all duration-500`} />
     <div className={`w-16 h-16 rounded-2xl bg-${color}-500/10 flex items-center justify-center mb-6 border border-${color}-500/20`}>
@@ -22,7 +16,7 @@ const FeatureCard = ({ title, desc, icon: Icon, delay, color }) => (
     </div>
     <h3 className="text-2xl font-bold text-white mb-4">{title}</h3>
     <p className="text-slate-400 leading-relaxed text-lg">{desc}</p>
-  </motion.div>
+  </div>
 );
 
 const StatBadge = ({ value, label }) => (
@@ -35,7 +29,6 @@ const StatBadge = ({ value, label }) => (
 export default function Home() {
   const { user, isAuthenticated, isHydrated } = useSelector((state) => state.auth);
 
-
   return (
     <div className="min-h-screen bg-slate-950 overflow-hidden text-slate-300">
       {/* Dynamic Background */}
@@ -46,20 +39,10 @@ export default function Home() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-24 pb-32">
         {/* Hero Section */}
-        <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center mb-32 max-w-4xl mx-auto"
-        >
-          <motion.div 
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-bold tracking-widest uppercase mb-8 backdrop-blur-md"
-          >
+        <div className="text-center mb-32 max-w-4xl mx-auto animate-[fadeIn_0.8s_ease-out_forwards]">
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-bold tracking-widest uppercase mb-8 backdrop-blur-md">
             <ShieldCheck className="w-4 h-4" /> Next-Gen University Portal
-          </motion.div>
+          </div>
           
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-8 tracking-tight text-white leading-tight">
             Manage with <br/>
@@ -73,12 +56,7 @@ export default function Home() {
           </p>
 
           {!isAuthenticated && (
-            <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="flex flex-col sm:flex-row items-center justify-center gap-4"
-            >
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link 
                 href="/login" 
                 className="group w-full sm:w-auto flex items-center justify-center gap-3 bg-white text-slate-950 px-10 py-5 rounded-2xl text-lg font-bold hover:bg-slate-200 transition-all duration-300 shadow-xl shadow-white/5 active:scale-95"
@@ -91,17 +69,12 @@ export default function Home() {
               >
                 Explore Features <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
-            </motion.div>
+            </div>
           )}
-        </motion.div>
+        </div>
 
-        {isAuthenticated && user ? (
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="w-full mt-20"
-          >
+        {isAuthenticated && user && isHydrated ? (
+          <div className="w-full mt-20 animate-[fadeIn_0.6s_ease-out_forwards]">
             {user.role === 'admin' ? (
               <AdminDashboard />
             ) : user.role === 'professor' ? (
@@ -109,21 +82,16 @@ export default function Home() {
             ) : (
               <StudentDashboard />
             )}
-          </motion.div>
+          </div>
         ) : (
           <>
             {/* Stats Section */}
-            <motion.div 
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-32"
-            >
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-32">
                 <StatBadge value="99.9%" label="Uptime Reliability" />
                 <StatBadge value="50k+" label="Active Students" />
                 <StatBadge value="100+" label="Global Courses" />
                 <StatBadge value="24/7" label="System Access" />
-            </motion.div>
+            </div>
 
             {/* Features Section */}
             <div id="features" className="mb-32 scroll-mt-32">
@@ -158,12 +126,7 @@ export default function Home() {
             </div>
 
             {/* Details/Highlights Section */}
-            <motion.div 
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="glass rounded-[3rem] p-12 lg:p-20 border border-white/5 flex flex-col lg:flex-row items-center gap-16 overflow-hidden relative shadow-2xl"
-            >
+            <div className="glass rounded-[3rem] p-12 lg:p-20 border border-white/5 flex flex-col lg:flex-row items-center gap-16 overflow-hidden relative shadow-2xl">
                 <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-l from-blue-900/10 to-transparent pointer-events-none" />
                 
                 <div className="flex-1 space-y-8 relative z-10">
@@ -204,7 +167,7 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-            </motion.div>
+            </div>
 
             {/* Footer */}
             <footer className="mt-32 pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between text-slate-500 text-sm">
