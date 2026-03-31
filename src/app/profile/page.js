@@ -1,7 +1,7 @@
 'use client';
 import { useSelector } from 'react-redux';
 import { useProfile } from '@/hooks/useProfile';
-import FullScreenLoader from '@/components/FullScreenLoader';
+import Loader from '@/components/Loader';
 import { motion } from 'framer-motion';
 import { User, Mail, ShieldCheck, GraduationCap, MapPin, Phone, Calendar, AtSign, Fingerprint, Activity } from 'lucide-react';
 
@@ -9,7 +9,7 @@ export default function ProfilePage() {
   const { isHydrated } = useSelector((state) => state.auth);
   const { data: profile, isLoading } = useProfile();
 
-  if (!isHydrated || isLoading) return <FullScreenLoader message="Loading Profile Data..." />;
+  if (!isHydrated || isLoading) return <div className="flex items-center justify-center h-[70vh]"><Loader /></div>;
 
   const user = profile?.user;
   const student = profile?.student;

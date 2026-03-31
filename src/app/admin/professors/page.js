@@ -1,6 +1,6 @@
 'use client';
 import { useProfessors, useDeleteProfessor, useUpdateProfessor } from '@/hooks/useProfessors';
-import FullScreenLoader from '@/components/FullScreenLoader';
+import Loader from '@/components/Loader';
 import { useCourses, useSubjects } from '@/hooks/useCourseSubject';
 import { useState } from 'react';
 import Link from 'next/link';
@@ -30,7 +30,7 @@ export default function ProfessorListPage() {
   const selectedCourseObj = courses?.data?.find(c => c.name === editFormData.department);
   const { data: subjects } = useSubjects(selectedCourseObj?._id);
 
-  if (isLoading) return <FullScreenLoader message="Loading Faculty Directory..." />;
+  if (isLoading) return <div className="flex items-center justify-center h-[70vh]"><Loader /></div>;
 
   const filteredProfessors = professors?.data?.filter(p => 
     p.name.toLowerCase().includes(searchTerm.toLowerCase()) || 

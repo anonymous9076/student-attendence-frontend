@@ -1,6 +1,6 @@
 'use client';
 import { useCourses, useCreateCourse, useUpdateCourse, useDeleteCourse } from '@/hooks/useCourseSubject';
-import FullScreenLoader from '@/components/FullScreenLoader';
+import Loader from '@/components/Loader';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
     Plus, 
@@ -84,7 +84,7 @@ export default function CourseManagementPage() {
         c.code.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
-    if (isLoading) return <FullScreenLoader message="Loading Courses..." />;
+    if (isLoading) return <div className="flex items-center justify-center h-[70vh]"><Loader /></div>;
 
     return (
         <div className="min-h-screen pt-12 pb-24 px-6 bg-slate-950 text-white">
