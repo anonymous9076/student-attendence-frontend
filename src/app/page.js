@@ -196,7 +196,7 @@ export default function Home() {
                         </div>
                         
                         {/* Mini stat cards row */}
-                        <div className="grid grid-cols-3 gap-3 mb-4">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
                             <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-3 text-center">
                                 <p className="text-2xl font-black text-blue-400">248</p>
                                 <p className="text-[9px] text-slate-500 font-bold uppercase tracking-widest mt-0.5">Students</p>

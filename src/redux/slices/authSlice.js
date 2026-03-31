@@ -2,13 +2,13 @@ import { createSlice } from '@reduxjs/toolkit';
 
 // Safe localStorage helpers for iOS Safari Private Browsing
 const safeGetItem = (key) => {
-  try { return localStorage.getItem(key); } catch { return null; }
+  try { return localStorage.getItem(key); } catch (e) { return null; }
 };
 const safeSetItem = (key, value) => {
-  try { localStorage.setItem(key, value); } catch {}
+  try { localStorage.setItem(key, value); } catch (e) {}
 };
 const safeRemoveItem = (key) => {
-  try { localStorage.removeItem(key); } catch {}
+  try { localStorage.removeItem(key); } catch (e) {}
 };
 
 const initialState = {
@@ -30,7 +30,7 @@ const authSlice = createSlice({
           state.token = token;
           state.user = JSON.parse(user);
           state.isAuthenticated = true;
-        } catch {
+        } catch (e) {
           // Corrupted user JSON — clear it
           safeRemoveItem('token');
           safeRemoveItem('user');

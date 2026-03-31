@@ -7,9 +7,13 @@ const api = axios.create({
 // Add a request interceptor
 api.interceptors.request.use(
     (config) => {
-        const token = localStorage.getItem('token');
-        if (token) {
-            config.headers.Authorization = `Bearer ${token}`;
+        try {
+            const token = localStorage.getItem('token');
+            if (token) {
+                config.headers.Authorization = `Bearer ${token}`;
+            }
+        } catch (e) {
+            // localStorage unavailable (Safari Private Browsing)
         }
         return config;
     },
@@ -19,3 +23,4 @@ api.interceptors.request.use(
 );
 
 export default api;
+
