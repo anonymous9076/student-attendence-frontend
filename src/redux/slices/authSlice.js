@@ -6,7 +6,7 @@ const initialState = {
   isAuthenticated: false,
   isHydrated: false,
 };
-
+//ok
 const authSlice = createSlice({
   name: 'auth',
   initialState,
