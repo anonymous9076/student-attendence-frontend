@@ -1,7 +1,6 @@
 'use client';
 import { useState } from 'react';
 import api from '@/lib/api';
-import { motion } from 'framer-motion';
 import { Mail, ArrowLeft, Send, CheckCircle2 } from 'lucide-react';
 import Link from 'next/link';
 import { toast } from 'sonner';
@@ -35,9 +34,7 @@ export default function ForgotPasswordPage() {
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 blur-3xl rounded-full -mr-64 -mt-64" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-600/10 blur-3xl rounded-full -ml-64 -mb-64" />
 
-      <motion.div 
-        initial={{ opacity: 1, scale: 1 }}
-        animate={{ opacity: 1, scale: 1 }}
+      <div
         className="w-full max-w-md relative z-10"
       >
         <Link href="/login" className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-8 group">
@@ -52,9 +49,7 @@ export default function ForgotPasswordPage() {
 
         <div className="glass p-8 rounded-[2.5rem] shadow-2xl relative">
           {success ? (
-            <motion.div 
-              initial={{ opacity: 1, y: 0 }}
-              animate={{ opacity: 1, y: 0 }}
+            <div
               className="text-center py-4"
             >
               <div className="w-20 h-20 bg-green-500/10 border border-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -67,7 +62,7 @@ export default function ForgotPasswordPage() {
               <Link href="/login" className="block w-full bg-white text-slate-950 font-bold py-4 rounded-2xl hover:bg-slate-200 transition-all">
                 Return to Login
               </Link>
-            </motion.div>
+            </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
               {error && (
@@ -107,7 +102,7 @@ export default function ForgotPasswordPage() {
             </form>
           )}
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }

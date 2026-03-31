@@ -3,7 +3,6 @@ import { useCourses, useSubjects } from '@/hooks/useCourseSubject';
 import { useAddProfessor } from '@/hooks/useProfessors';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { motion } from 'framer-motion';
 import { UserPlus, User, ArrowLeft, Mail, Phone, Calendar, MapPin, GraduationCap, ChevronRight, UserCircle, Lock, Briefcase, Eye, EyeOff } from 'lucide-react';
 import Link from 'next/link';
 
@@ -51,9 +50,7 @@ export default function AddProfessorPage() {
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600/5 blur-3xl rounded-full -mr-64 -mt-64" />
 
       <div className="max-w-4xl mx-auto relative z-10">
-        <motion.div 
-          initial={{ opacity: 1, x: 0 }}
-          animate={{ opacity: 1, x: 0 }}
+        <div
           className="mb-12"
         >
           <Link href="/admin/professors" className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-6 font-semibold group">
@@ -61,11 +58,9 @@ export default function AddProfessorPage() {
           </Link>
           <h1 className="text-4xl font-extrabold text-white tracking-tight">Onboard New Professor</h1>
           <p className="text-slate-500 font-medium">Capture comprehensive academic and personal details for faculty</p>
-        </motion.div>
+        </div>
 
-        <motion.form 
-          initial={{ opacity: 1, y: 0 }}
-          animate={{ opacity: 1, y: 0 }}
+        <form
           onSubmit={handleSubmit} 
           className="glass p-10 rounded-[2.5rem] shadow-2xl space-y-10"
         >
@@ -97,7 +92,7 @@ export default function AddProfessorPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition-colors"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 z-10 p-2 text-slate-500 hover:text-slate-300 transition-colors touch-manipulation"
                 >
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
@@ -152,11 +147,9 @@ export default function AddProfessorPage() {
             </div>
           </div>
 
-          <motion.button 
+          <button 
             type="submit" 
             disabled={createMutation.isPending}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
             className="w-full bg-indigo-600 text-white py-5 rounded-[2rem] hover:bg-indigo-500 transition-all font-bold text-lg shadow-xl shadow-indigo-500/20 flex items-center justify-center gap-3 group"
           >
             {createMutation.isPending ? (
@@ -166,8 +159,8 @@ export default function AddProfessorPage() {
                 Confirm Registration <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
               </>
             )}
-          </motion.button>
-        </motion.form>
+          </button>
+        </form>
       </div>
     </div>
   );

@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import { useProfile } from '@/hooks/useProfile';
 import { useAttendance } from '@/hooks/useAttendance';
 import { useCourses, useSubjects } from '@/hooks/useCourseSubject';
-import { motion, AnimatePresence } from 'framer-motion';
 import { 
     Search, 
     Calendar, 
@@ -66,19 +65,15 @@ export default function AttendanceRecordsPage() {
     return (
         <div className="min-h-dvh pt-12 pb-24 px-6 bg-slate-950 text-white">
             <div className="max-w-7xl mx-auto">
-                <motion.div 
-                    initial={{ opacity: 1, y: 0 }}
-                    animate={{ opacity: 1, y: 0 }}
+                <div
                     className="mb-12"
                 >
                     <h1 className="text-4xl font-extrabold tracking-tight mb-2">Attendance Repository</h1>
                     <p className="text-slate-400 font-medium">Historical records and audit logs</p>
-                </motion.div>
+                </div>
 
                 {/* Filters Section */}
-                <motion.div 
-                    initial={{ opacity: 1, y: 0 }}
-                    animate={{ opacity: 1, y: 0 }}
+                <div
                     className="glass p-6 rounded-4xl mb-10 grid grid-cols-1 md:grid-cols-4 gap-6 items-end"
                 >
                     <div className="space-y-2">
@@ -128,12 +123,10 @@ export default function AttendanceRecordsPage() {
                     >
                         Clear Filters
                     </button>
-                </motion.div>
+                </div>
 
                 {/* Table Section */}
-                <motion.div 
-                    initial={{ opacity: 1, scale: 1 }}
-                    animate={{ opacity: 1, scale: 1 }}
+                <div
                     className="glass rounded-4xl overflow-hidden"
                 >
                     <div className="overflow-x-auto">
@@ -157,11 +150,8 @@ export default function AttendanceRecordsPage() {
                                     </tr>
                                 ) : (
                                     attendance?.data?.map((record, idx) => (
-                                        <motion.tr 
+                                        <tr 
                                             key={record._id}
-                                            initial={{ opacity: 1, y: 0 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            transition={{ delay: idx * 0.05 }}
                                             className="group hover:bg-white/2 transition-colors"
                                         >
                                             <td className="px-8 py-6">
@@ -201,7 +191,7 @@ export default function AttendanceRecordsPage() {
                                                     {record.status}
                                                 </div>
                                             </td>
-                                        </motion.tr>
+                                        </tr>
                                     ))
                                 )}
                             </tbody>
@@ -215,7 +205,7 @@ export default function AttendanceRecordsPage() {
                             <p className="text-slate-500 max-w-xs mx-auto">Try adjusting the filters to find the data you're looking for.</p>
                         </div>
                     )}
-                </motion.div>
+                </div>
             </div>
         </div>
     );

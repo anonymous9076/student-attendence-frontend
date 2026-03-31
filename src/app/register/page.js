@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import api from '@/lib/api';
 import { useRouter } from 'next/navigation';
-import { motion } from 'framer-motion';
 import { UserPlus, Mail, Lock, UserCircle, ArrowRight, CheckCircle2 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -36,9 +35,7 @@ export default function RegisterPage() {
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-600/10 blur-3xl rounded-full -ml-64 -mt-64" />
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-600/10 blur-3xl rounded-full -mr-64 -mb-64" />
 
-      <motion.div 
-        initial={{ opacity: 1, y: 0 }}
-        animate={{ opacity: 1, y: 0 }}
+      <div
         className="w-full max-w-md relative z-10"
       >
         <div className="text-center mb-8">
@@ -53,14 +50,12 @@ export default function RegisterPage() {
           <div className="absolute inset-0 bg-white/[0.02] group-hover:bg-white/[0.04] transition-colors" />
 
           {error && (
-            <motion.div 
-              initial={{ opacity: 1, x: 0 }}
-              animate={{ opacity: 1, x: 0 }}
+            <div
               className="mb-6 p-4 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm flex items-start gap-3"
             >
               <div className="w-1.5 h-1.5 rounded-full bg-red-500 mt-1.5 shrink-0" />
               {error}
-            </motion.div>
+            </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-5 relative z-10">
@@ -140,7 +135,7 @@ export default function RegisterPage() {
         <p className="mt-8 text-center text-slate-500 font-medium">
           Already have an account? <Link href="/login" className="text-white hover:text-blue-400 transition decoration-white hover:decoration-blue-400 underline underline-offset-4">Sign in here</Link>
         </p>
-      </motion.div>
+      </div>
     </div>
   );
 }

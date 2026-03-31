@@ -46,7 +46,13 @@ export default function Home() {
           
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-8 tracking-tight text-white leading-tight">
             Manage with <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400">
+            <span style={{
+              background: 'linear-gradient(to right, #60a5fa, #818cf8, #c084fc)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              display: 'inline-block'
+            }}>
                 Absolute Precision.
             </span>
           </h1>

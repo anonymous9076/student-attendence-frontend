@@ -5,7 +5,6 @@ import { useProfile } from '@/hooks/useProfile';
 import { useStudents } from '@/hooks/useStudents';
 import { useCourses, useSubjects } from '@/hooks/useCourseSubject';
 import { useMarkAttendance } from '@/hooks/useAttendance';
-import { motion, AnimatePresence } from 'framer-motion';
 import { 
     Calendar, 
     BookOpen, 
@@ -110,20 +109,16 @@ export default function MarkAttendancePage() {
     return (
         <div className="min-h-dvh pt-12 pb-24 px-6 bg-slate-950">
             <div className="max-w-6xl mx-auto">
-                <motion.div 
-                    initial={{ opacity: 1, y: 0 }}
-                    animate={{ opacity: 1, y: 0 }}
+                <div
                     className="mb-12"
                 >
                     <h1 className="text-4xl font-extrabold text-white tracking-tight mb-2">Mark Attendance</h1>
                     <p className="text-slate-400 font-medium">Bulk mark daily presence for your students</p>
-                </motion.div>
+                </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Selectors Panel */}
-                    <motion.div 
-                        initial={{ opacity: 1, x: 0 }}
-                        animate={{ opacity: 1, x: 0 }}
+                    <div
                         className="glass p-8 rounded-4xl h-fit sticky top-12"
                     >
                         <div className="space-y-6">
@@ -177,12 +172,10 @@ export default function MarkAttendancePage() {
                                 {markMutation.isPending ? 'Saving...' : 'Submit Attendance'}
                             </button>
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* Students List */}
-                    <motion.div 
-                        initial={{ opacity: 1, x: 0 }}
-                        animate={{ opacity: 1, x: 0 }}
+                    <div
                         className="lg:col-span-2"
                     >
                         {!selectedCourse ? (
@@ -205,13 +198,9 @@ export default function MarkAttendancePage() {
                                 </div>
 
                                 <div className="space-y-3">
-                                    <AnimatePresence mode="popLayout">
+                                    <>
                                         {filteredStudents?.map((student, idx) => (
-                                            <motion.div 
-                                                layout
-                                                initial={{ opacity: 1, x: 0 }}
-                                                animate={{ opacity: 1, x: 0 }}
-                                                exit={{ opacity: 0, scale: 0.95 }}
+                                            <div
                                                 key={student._id}
                                                 className="glass p-5 rounded-2xl flex items-center justify-between group"
                                             >
@@ -243,9 +232,9 @@ export default function MarkAttendancePage() {
                                                         </>
                                                     )}
                                                 </button>
-                                            </motion.div>
+                                            </div>
                                         ))}
-                                    </AnimatePresence>
+                                    </>
 
                                     {filteredStudents?.length === 0 && (
                                         <div className="text-center p-12 glass rounded-2xl">
@@ -256,7 +245,7 @@ export default function MarkAttendancePage() {
                                 </div>
                             </div>
                         ) }
-                    </motion.div>
+                    </div>
                 </div>
             </div>
         </div>

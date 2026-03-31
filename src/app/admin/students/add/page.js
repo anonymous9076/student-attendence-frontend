@@ -3,7 +3,6 @@ import { useCreateStudent } from '@/hooks/useStudents';
 import { useCourses } from '@/hooks/useCourseSubject';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { motion } from 'framer-motion';
 import { UserPlus, User, ArrowLeft, Mail, Phone, Calendar, MapPin, GraduationCap, ChevronRight, UserCircle, Lock, Eye, EyeOff } from 'lucide-react';
 import Link from 'next/link';
 import DatePicker from '@/components/DatePicker';
@@ -48,9 +47,7 @@ export default function AddStudentPage() {
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/5 blur-3xl rounded-full -mr-64 -mt-64" />
 
       <div className="max-w-4xl mx-auto relative z-10">
-        <motion.div 
-          initial={{ opacity: 1, x: 0 }}
-          animate={{ opacity: 1, x: 0 }}
+        <div
           className="mb-12"
         >
           <Link href="/admin/students" className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-6 font-semibold group">
@@ -58,11 +55,9 @@ export default function AddStudentPage() {
           </Link>
           <h1 className="text-4xl font-extrabold text-white tracking-tight">Onboard New Student</h1>
           <p className="text-slate-500 font-medium">Capture comprehensive academic and personal details</p>
-        </motion.div>
+        </div>
 
-        <motion.form 
-          initial={{ opacity: 1, y: 0 }}
-          animate={{ opacity: 1, y: 0 }}
+        <form
           onSubmit={handleSubmit} 
           className="glass p-10 rounded-[2.5rem] shadow-2xl space-y-10"
         >
@@ -94,7 +89,7 @@ export default function AddStudentPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition-colors"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 z-10 p-2 text-slate-500 hover:text-slate-300 transition-colors touch-manipulation"
                 >
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
@@ -156,11 +151,9 @@ export default function AddStudentPage() {
             </div>
           </div>
 
-          <motion.button 
+          <button 
             type="submit" 
             disabled={createMutation.isPending}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
             className="w-full bg-blue-600 text-white py-5 rounded-[2rem] hover:bg-blue-500 transition-all font-bold text-lg shadow-xl shadow-blue-500/20 flex items-center justify-center gap-3 group"
           >
             {createMutation.isPending ? (
@@ -170,8 +163,8 @@ export default function AddStudentPage() {
                 Confirm Enrollment <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
               </>
             )}
-          </motion.button>
-        </motion.form>
+          </button>
+        </form>
       </div>
     </div>
   );

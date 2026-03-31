@@ -2,7 +2,6 @@
 import { useAttendanceSummary, useStudentAttendance } from '@/hooks/useAttendance';
 import { useProfile } from '@/hooks/useProfile';
 import Loader from '@/components/Loader';
-import { motion } from 'framer-motion';
 import { 
     Activity, 
     Calendar, 
@@ -31,8 +30,7 @@ export default function StudentAttendancePage() {
     if (loadingSummary || loadingRecords) return <div className="flex items-center justify-center h-[70vh]"><Loader /></div>;
 
     const StatCard = ({ label, value, icon: Icon, color, subText, span = 'col-span-1' }) => (
-        <motion.div 
-            whileHover={{ y: -5 }}
+        <div
             className={`${span} glass p-8 rounded-[2.5rem] border border-white/5 relative overflow-hidden group shadow-2xl`}
         >
             <div className={`absolute -right-10 -top-10 w-40 h-40 bg-${color}-500/5 blur-3xl rounded-full group-hover:bg-${color}-500/10 transition-all`} />
@@ -50,7 +48,7 @@ export default function StudentAttendancePage() {
                     <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">{subText}</p>
                 </div>
             </div>
-        </motion.div>
+        </div>
     );
 
     return (
@@ -61,9 +59,7 @@ export default function StudentAttendancePage() {
 
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* Page Header */}
-                <motion.div 
-                    initial={{ opacity: 1, y: 0 }}
-                    animate={{ opacity: 1, y: 0 }}
+                <div
                     className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16"
                 >
                     <div className="space-y-4">
@@ -90,7 +86,7 @@ export default function StudentAttendancePage() {
                             </div>
                         </div>
                     </div>
-                </motion.div>
+                </div>
 
                 {/* Metrics Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
@@ -127,10 +123,7 @@ export default function StudentAttendancePage() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
                     {/* Subject Analysis */}
-                    <motion.div 
-                        initial={{ opacity: 1, x: 0 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.2 }}
+                    <div
                         className="lg:col-span-2 space-y-8"
                     >
                         <div className="flex items-center justify-between">
@@ -158,8 +151,7 @@ export default function StudentAttendancePage() {
                                             </div>
                                         </div>
                                         <div className="w-full bg-slate-900/50 h-3 rounded-full overflow-hidden p-0.5 border border-white/5">
-                                            <motion.div 
-                                                initial={{ width: 0 }}
+                                            <div
                                                 animate={{ width: `${sub.percentage}%` }}
                                                 className={`h-full rounded-full ${sub.percentage >= 75 ? 'bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.3)]' : 'bg-red-500 shadow-[0_0_15px_rgba(239,68,68,0.3)]'}`}
                                             />
@@ -173,13 +165,10 @@ export default function StudentAttendancePage() {
                                 <p className="text-slate-500 font-medium italic">No subject-wise analysis available yet.</p>
                             </div>
                         )}
-                    </motion.div>
+                    </div>
 
                     {/* Attendance Logs */}
-                    <motion.div 
-                        initial={{ opacity: 1, x: 0 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.3 }}
+                    <div
                         className="lg:col-span-3 space-y-8"
                     >
                         <div className="flex items-center justify-between">
@@ -206,10 +195,7 @@ export default function StudentAttendancePage() {
                                     <tbody className="divide-y divide-white/5">
                                         {history.length > 0 ? (
                                             history.map((record, idx) => (
-                                                <motion.tr 
-                                                    initial={{ opacity: 1 }}
-                                                    animate={{ opacity: 1 }}
-                                                    transition={{ delay: idx * 0.05 }}
+                                                <tr
                                                     key={idx} 
                                                     className="group hover:bg-white/[0.03] transition-colors cursor-default"
                                                 >
@@ -245,7 +231,7 @@ export default function StudentAttendancePage() {
                                                             {record.status}
                                                         </div>
                                                     </td>
-                                                </motion.tr>
+                                                </tr>
                                             ))
                                         ) : (
                                             <tr>
@@ -263,7 +249,7 @@ export default function StudentAttendancePage() {
                                 </table>
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
             </div>
         </div>

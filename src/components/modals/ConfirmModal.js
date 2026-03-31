@@ -1,5 +1,4 @@
 'use client';
-import { motion, AnimatePresence } from 'framer-motion';
 import { X, AlertTriangle, Trash2, CheckCircle2, AlertCircle } from 'lucide-react';
 
 const icons = {
@@ -28,20 +27,14 @@ export default function ConfirmModal({
   loading = false
 }) {
   return (
-    <AnimatePresence>
+    <>
       {isOpen && (
         <div className="fixed inset-0 z-100 flex items-center justify-center p-6 overscroll-contain">
-          <motion.div 
-            initial={{ opacity: 1 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+          <div
             onClick={onClose}
             className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm"
           />
-          <motion.div 
-            initial={{ opacity: 1, scale: 1, y: 0 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+          <div
             className="bg-slate-900 border border-white/10 w-full max-w-md rounded-[2.5rem] p-8 relative shadow-2xl"
           >
             <button 
@@ -82,9 +75,9 @@ export default function ConfirmModal({
                 </button>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       )}
-    </AnimatePresence>
+    </>
   );
 }

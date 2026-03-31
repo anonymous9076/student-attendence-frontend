@@ -3,7 +3,6 @@ import { useCourses } from '@/hooks/useCourseSubject';
 import { useAdminNotifications, useCreateNotification, useDeleteNotification } from '@/hooks/useNotifications';
 import { useSelector } from 'react-redux';
 import { useProfile } from '@/hooks/useProfile';
-import { motion, AnimatePresence } from 'framer-motion';
 import { 
     Bell, 
     Send, 
@@ -78,20 +77,18 @@ export default function NotificationManagement() {
         <div className="min-h-dvh pt-12 pb-24 px-6 bg-slate-950 text-white">
             <div className="max-w-6xl mx-auto">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
-                    <motion.div initial={{ opacity: 1, x: 0 }} animate={{ opacity: 1, x: 0 }}>
+                    <div>
                         <h1 className="text-4xl font-extrabold tracking-tight mb-2">Announcements</h1>
                         <p className="text-slate-400 font-medium">Broadcast updates and alerts to the student body</p>
-                    </motion.div>
+                    </div>
 
-                    <motion.button
-                        initial={{ opacity: 1, x: 0 }}
-                        animate={{ opacity: 1, x: 0 }}
+                    <button
                         onClick={() => setIsModalOpen(true)}
                         className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-2xl font-bold transition-all shadow-lg shadow-blue-500/20 active:scale-95"
                     >
                         <Bell className="w-5 h-5" />
                         New Announcement
-                    </motion.button>
+                    </button>
                 </div>
 
                 {/* Notifications List */}
@@ -102,11 +99,8 @@ export default function NotificationManagement() {
                         </div>
                     ) : (
                         notifications?.data?.map((n, idx) => (
-                            <motion.div 
+                            <div 
                                 key={n._id}
-                                initial={{ opacity: 1, y: 0 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: idx * 0.05 }}
                                 className="glass p-6 rounded-3xl border border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-white/10 transition-colors group"
                             >
                                 <div className="flex-1 space-y-2">
@@ -131,7 +125,7 @@ export default function NotificationManagement() {
                                         <Trash2 className="w-5 h-5" />
                                     </button>
                                 )}
-                            </motion.div>
+                            </div>
                         ))
                     )}
 
@@ -144,18 +138,14 @@ export default function NotificationManagement() {
                 </div>
 
                 {/* Modal */}
-                <AnimatePresence>
+                <>
                     {isModalOpen && (
                         <div className="fixed inset-0 z-60 flex items-center justify-center p-6">
-                            <motion.div 
-                                initial={{ opacity: 1 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                            <div
                                 onClick={() => setIsModalOpen(false)}
                                 className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm"
                             />
-                            <motion.div 
-                                initial={{ opacity: 1, scale: 1, y: 0 }}
-                                animate={{ opacity: 1, scale: 1, y: 0 }}
-                                exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                            <div
                                 className="bg-slate-900 border border-white/10 w-full max-w-xl rounded-[2.5rem] p-8 relative shadow-2xl"
                             >
                                 <button 
@@ -248,10 +238,10 @@ export default function NotificationManagement() {
                                         {createMutation.isPending ? 'Processing...' : 'Broadcast Announcement'}
                                     </button>
                                 </form>
-                            </motion.div>
+                            </div>
                         </div>
                     )}
-                </AnimatePresence>
+                </>
             </div>
             {/* Confirm Delete Modal */}
             <ConfirmModal 

@@ -4,7 +4,6 @@ import api from '@/lib/api';
 import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { setCredentials } from '@/redux/slices/authSlice';
-import { motion } from 'framer-motion';
 import { Mail, Lock, LogIn, ArrowRight, Eye, EyeOff } from 'lucide-react';
 import Link from 'next/link';
 import { toast } from 'sonner';
@@ -42,19 +41,15 @@ export default function LoginPage() {
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 blur-3xl rounded-full -mr-64 -mt-64" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-600/10 blur-3xl rounded-full -ml-64 -mb-64" />
 
-      <motion.div 
-        initial={{ opacity: 1, scale: 1 }}
-        animate={{ opacity: 1, scale: 1 }}
+      <div
         className="w-full max-w-md relative z-10"
       >
         <div className="text-center mb-10">
-          <motion.div 
-            initial={{ y: -20 }}
-            animate={{ y: 0 }}
+          <div
             className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl shadow-blue-500/20"
           >
             <LogIn className="text-white w-8 h-8" />
-          </motion.div>
+          </div>
           <h1 className="text-4xl font-extrabold text-white mb-3 tracking-tight">Welcome Back</h1>
           <p className="text-slate-400">Continue to the Student Management Portal</p>
         </div>
@@ -63,14 +58,12 @@ export default function LoginPage() {
           <div className="absolute inset-0 bg-white/[0.02] group-hover:bg-white/[0.04] transition-colors" />
           
           {error && (
-            <motion.div 
-              initial={{ opacity: 1, x: 0 }}
-              animate={{ opacity: 1, x: 0 }}
+            <div
               className="mb-6 p-4 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm flex items-start gap-3"
             >
               <div className="w-1.5 h-1.5 rounded-full bg-red-500 mt-1.5 shrink-0" />
               {error}
-            </motion.div>
+            </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
@@ -106,7 +99,7 @@ export default function LoginPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition-colors"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 z-10 p-2 text-slate-500 hover:text-slate-300 transition-colors touch-manipulation"
                 >
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
@@ -131,7 +124,7 @@ export default function LoginPage() {
             </button>
           </form>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }

@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import api from '@/lib/api';
 import { useRouter, useParams } from 'next/navigation';
-import { motion } from 'framer-motion';
 import { Lock, Key, CheckCircle2, ArrowRight, Eye, EyeOff } from 'lucide-react';
 import Link from 'next/link';
 import { toast } from 'sonner';
@@ -45,9 +44,7 @@ export default function ResetPasswordPage() {
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 blur-3xl rounded-full -mr-64 -mt-64" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-600/10 blur-3xl rounded-full -ml-64 -mb-64" />
 
-      <motion.div 
-        initial={{ opacity: 1, scale: 1 }}
-        animate={{ opacity: 1, scale: 1 }}
+      <div
         className="w-full max-w-md relative z-10"
       >
         <div className="text-center mb-10">
@@ -57,9 +54,7 @@ export default function ResetPasswordPage() {
 
         <div className="glass p-8 rounded-[2.5rem] shadow-2xl relative">
           {success ? (
-            <motion.div 
-              initial={{ opacity: 1, y: 0 }}
-              animate={{ opacity: 1, y: 0 }}
+            <div
               className="text-center py-4"
             >
               <div className="w-20 h-20 bg-green-500/10 border border-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -72,7 +67,7 @@ export default function ResetPasswordPage() {
               <Link href="/login" className="block w-full bg-blue-600 text-white font-bold py-4 rounded-2xl hover:bg-blue-500 transition-all flex items-center justify-center gap-2">
                 Continue to Login <ArrowRight className="w-4 h-4" />
               </Link>
-            </motion.div>
+            </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
               {error && (
@@ -97,7 +92,7 @@ export default function ResetPasswordPage() {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition-colors"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 z-10 p-2 text-slate-500 hover:text-slate-300 transition-colors touch-manipulation"
                   >
                     {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
@@ -135,7 +130,7 @@ export default function ResetPasswordPage() {
             </form>
           )}
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }

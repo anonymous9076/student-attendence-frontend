@@ -2,7 +2,6 @@
 import { useSelector } from 'react-redux';
 import { useProfile } from '@/hooks/useProfile';
 import Loader from '@/components/Loader';
-import { motion } from 'framer-motion';
 import { User, Mail, ShieldCheck, GraduationCap, MapPin, Phone, Calendar, AtSign, Fingerprint, Activity } from 'lucide-react';
 
 export default function ProfilePage() {
@@ -16,8 +15,7 @@ export default function ProfilePage() {
   const professor = profile?.professor;
 
   const ProfileCard = ({ icon: Icon, label, value, color, span = 'col-span-1' }) => (
-    <motion.div 
-      whileHover={{ y: -4, scale: 1.01 }}
+    <div
       className={`${span} glass p-8 rounded-[2.5rem] border border-white/5 hover:border-white/10 transition-all group relative overflow-hidden`}
     >
       <div className={`absolute -right-8 -bottom-8 w-32 h-32 bg-${color}-500/5 blur-3xl rounded-full group-hover:bg-${color}-500/10 transition-all`} />
@@ -32,7 +30,7 @@ export default function ProfilePage() {
           </span>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 
   return (
@@ -43,9 +41,7 @@ export default function ProfilePage() {
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Header Section */}
-        <motion.div 
-          initial={{ opacity: 1, y: 0 }}
-          animate={{ opacity: 1, y: 0 }}
+        <div
           className="flex flex-col md:flex-row items-center gap-10 mb-16 px-4"
         >
           <div className="relative">
@@ -72,7 +68,7 @@ export default function ProfilePage() {
               Verified {user?.role} Portal
             </p>
           </div>
-        </motion.div>
+        </div>
 
         {/* Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -135,10 +131,7 @@ export default function ProfilePage() {
         </div>
 
         {/* Notice Section */}
-        <motion.div 
-          initial={{ opacity: 1, y: 0 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
+        <div
           className="mt-12 glass p-10 rounded-[3rem] border-white/5 relative group"
         >
           <div className="flex flex-col md:flex-row gap-10 items-start md:items-center">
@@ -161,7 +154,7 @@ export default function ProfilePage() {
                 </div>
              </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

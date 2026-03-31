@@ -1,7 +1,6 @@
 'use client';
 import { useStudentDashboard } from '@/hooks/useDashboard';
 import Loader from '@/components/Loader';
-import { motion } from 'framer-motion';
 import { 
     GraduationCap, 
     Book, 
@@ -29,9 +28,7 @@ export default function StudentDashboard() {
     return (
         <div className="space-y-12">
             {/* Profile Header */}
-            <motion.div 
-                initial={{ opacity: 1, y: 0 }}
-                animate={{ opacity: 1, y: 0 }}
+            <div
                 className="glass p-8 rounded-[3rem] border border-white/5 relative overflow-hidden"
             >
                 <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/5 blur-3xl rounded-full -mr-32 -mt-32" />
@@ -80,7 +77,7 @@ export default function StudentDashboard() {
                         <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1 block">Total Attendance</span>
                     </div>
                 </div>
-            </motion.div>
+            </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
                 {/* Course Details */}

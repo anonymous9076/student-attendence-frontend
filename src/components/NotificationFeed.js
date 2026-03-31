@@ -1,6 +1,5 @@
 'use client';
 import { useNotifications } from '@/hooks/useNotifications';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Bell, Info, Calendar, AlertCircle, ChevronRight } from 'lucide-react';
 
 export default function NotificationFeed() {
@@ -14,14 +13,11 @@ export default function NotificationFeed() {
 
     return (
         <div className="space-y-4">
-            <AnimatePresence mode="popLayout">
+            <>
                 {notifications?.data?.length > 0 ? (
                     notifications.data.map((n, idx) => (
-                        <motion.div
+                        <div
                             key={n._id}
-                            initial={{ opacity: 1, x: 0 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: idx * 0.1 }}
                             className="bg-slate-900 border border-white/5 p-5 rounded-3xl hover:border-blue-500/20 transition-all group relative overflow-hidden"
                         >
                             <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
@@ -48,7 +44,7 @@ export default function NotificationFeed() {
                                     </span>
                                 </div>
                             </div>
-                        </motion.div>
+                        </div>
                     ))
                 ) : (
                     <div className="py-12 text-center glass rounded-4xl border border-dashed border-white/10">
@@ -56,7 +52,7 @@ export default function NotificationFeed() {
                         <p className="text-slate-500 text-xs font-medium italic">No recent announcements.</p>
                     </div>
                 )}
-            </AnimatePresence>
+            </>
         </div>
     );
 }

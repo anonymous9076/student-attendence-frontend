@@ -100,12 +100,7 @@
 }
 
 /* iOS Safari: bg-clip-text + text-transparent fix */
-/* Tailwind's text-transparent sets color:transparent but Safari needs -webkit-text-fill-color */
-.bg-clip-text {
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+/* Applied via inline style on the specific element instead of globally to avoid interference */
 
 /* iOS Safari: Ensure backdrop-filter always has -webkit- prefix */
 .glass, [class*="backdrop-blur"] {

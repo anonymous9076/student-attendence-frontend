@@ -4,7 +4,6 @@ import { usePathname } from 'next/navigation';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '@/redux/slices/authSlice';
 import { useRouter } from 'next/navigation';
-import { motion } from 'framer-motion';
 import { LogOut, User, Users, Home, LayoutDashboard, Calendar, ClipboardList, BookOpen, GraduationCap, Bell, Library } from 'lucide-react';
 
 export default function Navbar() {
@@ -35,9 +34,7 @@ export default function Navbar() {
     ];
 
   return (
-    <motion.nav 
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
+    <nav
       className="sticky top-0 z-50 w-full border-b border-white/10 bg-slate-950/80 backdrop-blur-md px-6 py-3"
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center">
@@ -87,6 +84,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-    </motion.nav>
+    </nav>
   );
 }

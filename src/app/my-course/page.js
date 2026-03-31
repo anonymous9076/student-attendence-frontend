@@ -3,7 +3,6 @@ import { useSubjects } from '@/hooks/useCourseSubject';
 import { useAttendanceSummary } from '@/hooks/useAttendance';
 import { useProfile } from '@/hooks/useProfile';
 import Loader from '@/components/Loader';
-import { motion } from 'framer-motion';
 import { GraduationCap, Book, Info, Calendar as CalendarIcon, BarChart3, ArrowUpRight, Clock, Code, Layers, Activity, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
 
@@ -26,9 +25,7 @@ export default function MyCoursePage() {
             <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-indigo-600/5 blur-3xl rounded-full -mr-96 -mb-96" />
 
             <div className="max-w-7xl mx-auto relative z-10">
-                <motion.div 
-                    initial={{ opacity: 1, y: 0 }}
-                    animate={{ opacity: 1, y: 0 }}
+                <div
                     className="flex flex-col md:flex-row md:items-end justify-between items-start gap-10 mb-16"
                 >
                    <div className="space-y-4">
@@ -54,12 +51,10 @@ export default function MyCoursePage() {
                             </div>
                         </div>
                    </div>
-                </motion.div>
+                </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                    <motion.div 
-                        initial={{ opacity: 1, y: 0 }}
-                        animate={{ opacity: 1, y: 0 }}
+                    <div
                         className="lg:col-span-8 flex flex-col gap-8"
                     >
                         <div className="glass p-10 rounded-[3.5rem] border border-white/5 relative overflow-hidden group shadow-2xl">
@@ -124,11 +119,8 @@ export default function MyCoursePage() {
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                                 {subjects.length > 0 ? subjects.map((sub, idx) => (
-                                    <motion.div 
+                                    <div 
                                         key={sub._id}
-                                        initial={{ opacity: 1, scale: 1 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        transition={{ delay: idx * 0.05 }}
                                         className="glass p-7 rounded-[2.5rem] border border-white/5 hover:bg-white/[0.03] hover:border-white/10 transition-all group/sub cursor-default"
                                     >
                                         <div className="flex justify-between items-center">
@@ -146,7 +138,7 @@ export default function MyCoursePage() {
                                             </div>
                                             <ArrowUpRight className="w-5 h-5 text-slate-700 group-hover/sub:text-blue-500 transition-colors" />
                                         </div>
-                                    </motion.div>
+                                    </div>
                                 )) : (
                                     <div className="col-span-full py-20 glass rounded-[3rem] flex flex-col items-center justify-center border-dashed border-2 border-white/5 opacity-50">
                                         <Book className="w-12 h-12 text-slate-800 mb-4" />
@@ -155,11 +147,9 @@ export default function MyCoursePage() {
                                 )}
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
 
-                    <motion.div 
-                        initial={{ opacity: 1, x: 0 }}
-                        animate={{ opacity: 1, x: 0 }}
+                    <div
                         className="lg:col-span-4 space-y-8"
                     >
                         <div className="glass p-10 rounded-[3.5rem] border border-blue-500/10 bg-blue-500/[0.02] shadow-xl">
@@ -206,7 +196,7 @@ export default function MyCoursePage() {
                                 Your academic credentials and course enrollments are verified as of today, {new Date().toLocaleDateString()}.
                             </p>
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
             </div>
         </div>

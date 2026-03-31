@@ -1,23 +1,40 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// Safe localStorage helpers for iOS Safari Private Browsing
+const safeGetItem = (key) => {
+  try { return localStorage.getItem(key); } catch { return null; }
+};
+const safeSetItem = (key, value) => {
+  try { localStorage.setItem(key, value); } catch {}
+};
+const safeRemoveItem = (key) => {
+  try { localStorage.removeItem(key); } catch {}
+};
+
 const initialState = {
   user: null,
   token: null,
   isAuthenticated: false,
   isHydrated: false,
 };
-//ok
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
     hydrate: (state) => {
-      const token = localStorage.getItem('token');
-      const user = localStorage.getItem('user');
+      const token = safeGetItem('token');
+      const user = safeGetItem('user');
       if (token && user) {
-        state.token = token;
-        state.user = JSON.parse(user);
-        state.isAuthenticated = true;
+        try {
+          state.token = token;
+          state.user = JSON.parse(user);
+          state.isAuthenticated = true;
+        } catch {
+          // Corrupted user JSON — clear it
+          safeRemoveItem('token');
+          safeRemoveItem('user');
+        }
       }
       state.isHydrated = true;
     },
@@ -25,18 +42,19 @@ const authSlice = createSlice({
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isAuthenticated = true;
-      localStorage.setItem('token', action.payload.token);
-      localStorage.setItem('user', JSON.stringify(action.payload.user));
+      safeSetItem('token', action.payload.token);
+      safeSetItem('user', JSON.stringify(action.payload.user));
     },
     logout: (state) => {
       state.user = null;
       state.token = null;
       state.isAuthenticated = false;
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
+      safeRemoveItem('token');
+      safeRemoveItem('user');
     },
   },
 });
 
 export const { setCredentials, logout, hydrate } = authSlice.actions;
 export default authSlice.reducer;
+

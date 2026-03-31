@@ -1,7 +1,6 @@
 'use client';
 import { useCourses } from '@/hooks/useCourseSubject';
 import { useSubjects, useCreateSubject, useUpdateSubject, useDeleteSubject } from '@/hooks/useCourseSubject';
-import { motion, AnimatePresence } from 'framer-motion';
 import { 
     Plus, 
     Edit2, 
@@ -97,13 +96,11 @@ export default function SubjectManagementPage() {
         <div className="min-h-dvh pt-12 pb-24 px-6 bg-slate-950 text-white">
             <div className="max-w-6xl mx-auto">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
-                    <motion.div 
-                        initial={{ opacity: 1, x: 0 }}
-                        animate={{ opacity: 1, x: 0 }}
+                    <div
                     >
                         <h1 className="text-4xl font-extrabold tracking-tight mb-2">Subject Management</h1>
                         <p className="text-slate-400 font-medium">Manage academic subjects for each course</p>
-                    </motion.div>
+                    </div>
 
                     <div className="flex flex-col sm:flex-row gap-4 items-center">
                         <div className="relative w-full sm:w-64 group">
@@ -122,16 +119,14 @@ export default function SubjectManagementPage() {
                             <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 pointer-events-none group-hover:text-white transition-colors" />
                         </div>
 
-                        <motion.button
-                            initial={{ opacity: 1, x: 0 }}
-                            animate={{ opacity: 1, x: 0 }}
+                        <button
                             onClick={() => handleOpenModal()}
                             disabled={!selectedCourseId}
                             className="w-full sm:w-auto flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-2xl font-bold transition-all shadow-lg shadow-blue-500/20 active:scale-95 disabled:opacity-50"
                         >
                             <Plus className="w-5 h-5" />
                             Add Subject
-                        </motion.button>
+                        </button>
                     </div>
                 </div>
 
@@ -141,14 +136,10 @@ export default function SubjectManagementPage() {
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <AnimatePresence mode="popLayout">
+                        <>
                             {subjects?.data?.map((subject) => (
-                                <motion.div
+                                <div
                                     key={subject._id}
-                                    layout
-                                    initial={{ opacity: 1, y: 0 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, scale: 0.9 }}
                                     className="glass p-6 rounded-4xl border border-white/5 hover:border-blue-500/30 transition-all group relative overflow-hidden"
                                 >
                                     <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity flex gap-2">
@@ -181,9 +172,9 @@ export default function SubjectManagementPage() {
                                     <p className="text-slate-400 text-sm line-clamp-2 leading-relaxed">
                                         {subject.description || 'No description provided.'}
                                     </p>
-                                </motion.div>
+                                </div>
                             ))}
-                        </AnimatePresence>
+                        </>
 
                         {subjects?.data?.length === 0 && (
                             <div className="col-span-full text-center py-20 bg-white/5 rounded-4xl border border-dashed border-white/10">
@@ -204,20 +195,14 @@ export default function SubjectManagementPage() {
             </div>
 
             {/* Modal */}
-            <AnimatePresence>
+            <>
                 {isModalOpen && (
                     <div className="fixed inset-0 z-60 flex items-center justify-center p-6">
-                        <motion.div 
-                            initial={{ opacity: 1 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
+                        <div
                             onClick={() => setIsModalOpen(false)}
                             className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm"
                         />
-                        <motion.div 
-                            initial={{ opacity: 1, scale: 1, y: 0 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                        <div
                             className="bg-slate-900 border border-white/10 w-full max-w-lg rounded-[2.5rem] p-8 relative shadow-2xl"
                         >
                             <button 
@@ -293,10 +278,10 @@ export default function SubjectManagementPage() {
                                     {editingSubject ? 'Update Subject' : 'Create Subject'}
                                 </button>
                             </form>
-                        </motion.div>
+                        </div>
                     </div>
                 )}
-            </AnimatePresence>
+            </>
             {/* Confirm Delete Modal */}
             <ConfirmModal 
                 isOpen={isDeleteModalOpen}

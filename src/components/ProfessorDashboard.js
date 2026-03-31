@@ -1,7 +1,6 @@
 'use client';
 import { useAdminDashboard } from '@/hooks/useDashboard';
 import Loader from '@/components/Loader';
-import { motion } from 'framer-motion';
 import {
     Users,
     BookOpen,
@@ -20,8 +19,7 @@ import {
 import Link from 'next/link';
 
 const StatCard = ({ title, value, icon: Icon, color, subValue, isLoading }) => (
-    <motion.div
-        whileHover={{ y: -5 }}
+    <div
         className={`glass p-6 rounded-4xl border border-white/5 relative overflow-hidden group`}
     >
         <div className={`absolute -right-4 -top-4 w-24 h-24 bg-${color}-500/10 blur-2xl rounded-full group-hover:bg-${color}-500/20 transition-all`} />
@@ -38,7 +36,7 @@ const StatCard = ({ title, value, icon: Icon, color, subValue, isLoading }) => (
             {subValue && !isLoading && <span className="text-xs font-medium text-slate-500">{subValue}</span>}
             {isLoading && <div className="h-3 w-32 bg-white/5 rounded-lg mt-2 animate-pulse" />}
         </div>
-    </motion.div>
+    </div>
 );
 
 export default function ProfessorDashboard() {
