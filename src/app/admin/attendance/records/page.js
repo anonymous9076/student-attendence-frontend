@@ -16,6 +16,7 @@ import {
     Book
 } from 'lucide-react';
 import DatePicker from '@/components/DatePicker';
+import Loader from '@/components/Loader';
 
 export default function AttendanceRecordsPage() {
     const { user } = useSelector((state) => state.auth);
@@ -149,8 +150,9 @@ export default function AttendanceRecordsPage() {
                                 {isLoading ? (
                                     <tr>
                                         <td colSpan="4" className="p-20 text-center">
-                                            <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-                                            <p className="text-slate-500 font-medium">Fetching records...</p>
+                                            <div className="flex justify-center mb-4">
+                                                <Loader size="sm" />
+                                            </div>
                                         </td>
                                     </tr>
                                 ) : (
