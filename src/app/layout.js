@@ -1,9 +1,6 @@
-'use client';
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Provider } from "react-redux";
-import { store } from "@/redux/store";
-import QueryProvider from "@/providers/QueryProvider";
+import ClientProviders from "@/providers/ClientProviders";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,24 +12,32 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-import Navbar from "@/components/Navbar";
-import AuthProvider from "@/providers/AuthProvider";
-import { Toaster } from 'sonner';
+export const metadata = {
+  title: "UniPortal — Student Management System",
+  description: "A comprehensive university management platform for administrators, professors, and students. Track attendance, manage courses, and streamline academic workflows.",
+  keywords: "university, student management, attendance, courses, academic portal",
+  openGraph: {
+    title: "UniPortal — Student Management System",
+    description: "Next-gen university management platform",
+    type: "website",
+  },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: "cover",
+};
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-950 text-white min-h-dvh`}>
-        <Toaster richColors position="top-right" theme="dark" />
-        <Provider store={store}>
-          <QueryProvider>
-            <AuthProvider>
-              <Navbar />
-              <main>{children}</main>
-            </AuthProvider>
-          </QueryProvider>
-        </Provider>
+        <ClientProviders>{children}</ClientProviders>
       </body>
     </html>
   );
 }
+
