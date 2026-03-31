@@ -38,8 +38,8 @@ export default function ProfilePage() {
   return (
     <div className="min-h-screen pt-12 pb-24 px-6 bg-slate-950 relative overflow-hidden">
       {/* Dynamic Background */}
-      <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-blue-600/5 blur-[120px] rounded-full -mt-96 animate-pulse" />
-      <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-purple-600/5 blur-[120px] rounded-full -mb-96" />
+      <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-blue-600/5 blur-3xl rounded-full -mt-96 animate-pulse" />
+      <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-purple-600/5 blur-3xl rounded-full -mb-96" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Header Section */}

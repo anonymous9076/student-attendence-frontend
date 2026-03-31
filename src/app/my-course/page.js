@@ -22,8 +22,8 @@ export default function MyCoursePage() {
 
     return (
         <div className="min-h-screen pt-12 pb-24 px-6 bg-slate-950 text-white relative overflow-hidden font-sans">
-            <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-blue-600/5 blur-[120px] rounded-full -ml-96 -mt-96" />
-            <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-indigo-600/5 blur-[120px] rounded-full -mr-96 -mb-96" />
+            <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-blue-600/5 blur-3xl rounded-full -ml-96 -mt-96" />
+            <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-indigo-600/5 blur-3xl rounded-full -mr-96 -mb-96" />
 
             <div className="max-w-7xl mx-auto relative z-10">
                 <motion.div 

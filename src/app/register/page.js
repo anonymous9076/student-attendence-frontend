@@ -33,8 +33,8 @@ export default function RegisterPage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-slate-950 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-600/10 blur-[120px] rounded-full -ml-64 -mt-64" />
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-600/10 blur-[120px] rounded-full -mr-64 -mb-64" />
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-600/10 blur-3xl rounded-full -ml-64 -mt-64" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-600/10 blur-3xl rounded-full -mr-64 -mb-64" />
 
       <motion.div 
         initial={{ opacity: 0, y: 20 }}

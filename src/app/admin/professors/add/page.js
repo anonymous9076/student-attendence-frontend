@@ -48,7 +48,7 @@ export default function AddProfessorPage() {
 
   return (
     <div className="min-h-screen pt-12 pb-24 px-6 bg-slate-950 relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600/5 blur-[120px] rounded-full -mr-64 -mt-64" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600/5 blur-3xl rounded-full -mr-64 -mt-64" />
 
       <div className="max-w-4xl mx-auto relative z-10">
         <motion.div 

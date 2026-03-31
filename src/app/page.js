@@ -11,7 +11,7 @@ const FeatureCard = ({ title, desc, icon: Icon, delay, color }) => (
   <motion.div 
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-50px" }}
+    viewport={{ once: true }}
     transition={{ delay, duration: 0.5 }}
     whileHover={{ y: -8 }}
     className="relative group p-8 rounded-[2rem] bg-slate-900/40 border border-white/5 hover:border-white/10 transition-all duration-500 overflow-hidden"
@@ -39,9 +39,9 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-slate-950 overflow-hidden text-slate-300">
       {/* Dynamic Background */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-          <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-blue-600/10 blur-[150px] rounded-full mix-blend-screen" />
-          <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-purple-600/10 blur-[150px] rounded-full mix-blend-screen" />
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-blue-600/20 blur-3xl rounded-full" />
+          <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-purple-600/20 blur-3xl rounded-full" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-24 pb-32">
