@@ -35,15 +35,6 @@ const StatBadge = ({ value, label }) => (
 export default function Home() {
   const { user, isAuthenticated, isHydrated } = useSelector((state) => state.auth);
 
-  if (!isHydrated) return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-950">
-      <motion.div 
-        animate={{ rotate: 360 }}
-        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-        className="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full"
-      />
-    </div>
-  );
 
   return (
     <div className="min-h-screen bg-slate-950 overflow-hidden text-slate-300">
