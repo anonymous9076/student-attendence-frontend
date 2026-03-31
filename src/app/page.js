@@ -37,7 +37,34 @@ export default function Home() {
           <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-purple-600/20 blur-3xl rounded-full" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-24 pb-32">
+      {/* Landing Page Header */}
+      {!isAuthenticated && (
+        <nav className="fixed top-0 left-0 right-0 z-50">
+          <div className="bg-slate-950/70 backdrop-blur-xl border-b border-white/5">
+            <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+              {/* Brand */}
+              <Link href="/" className="flex items-center gap-2.5 group">
+                <div className="w-8 h-8 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/20" style={{ background: 'linear-gradient(135deg, #3b82f6, #6366f1)' }}>
+                  <Zap className="w-4 h-4 text-white" />
+                </div>
+                <span className="text-lg font-bold text-white tracking-tight hidden sm:block">UniPortal</span>
+              </Link>
+
+              {/* Auth Buttons */}
+              <div className="flex items-center gap-3">
+               
+                <Link href="/login" className="px-5 py-2 text-sm font-bold text-white rounded-lg shadow-lg shadow-blue-500/20 transition-all hover:opacity-90 active:scale-95" style={{ background: 'linear-gradient(135deg, #3b82f6, #6366f1)' }}>
+                  Get Started
+                </Link>
+              </div>
+            </div>
+          </div>
+          {/* Thin gradient accent line */}
+          <div className="h-px w-full" style={{ background: 'linear-gradient(to right, transparent, #3b82f6, #6366f1, #8b5cf6, transparent)' }} />
+        </nav>
+      )}
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-28 pb-32">
         {/* Hero Section */}
         <div className="text-center mb-32 max-w-4xl mx-auto animate-[fadeIn_0.8s_ease-out_forwards]">
           <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-bold tracking-widest uppercase mb-8 backdrop-blur-md">
@@ -49,9 +76,11 @@ export default function Home() {
             <span style={{
               background: 'linear-gradient(to right, #60a5fa, #818cf8, #c084fc)',
               WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
-              display: 'inline-block'
+              WebkitTextFillColor: 'transparent',
+              color: 'transparent',
+              display: 'inline-block',
+              paddingBottom: '0.1em'
             }}>
                 Absolute Precision.
             </span>
@@ -157,19 +186,53 @@ export default function Home() {
                 </div>
 
                 <div className="flex-1 w-full relative z-10">
-                    <div className="bg-slate-900/80 backdrop-blur-xl border border-white/10 rounded-3xl p-6 shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500">
-                        <div className="flex gap-2 mb-6">
+                    <div className="bg-slate-900/80 backdrop-blur-xl border border-white/10 rounded-3xl p-6 shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
+                        {/* Window chrome */}
+                        <div className="flex items-center gap-2 mb-5">
                             <div className="w-3 h-3 rounded-full bg-red-500" />
                             <div className="w-3 h-3 rounded-full bg-yellow-500" />
                             <div className="w-3 h-3 rounded-full bg-green-500" />
+                            <span className="ml-3 text-[10px] text-slate-500 font-mono tracking-wide">dashboard.university.edu</span>
                         </div>
-                        <div className="space-y-4">
-                            <div className="h-8 bg-white/5 rounded-lg w-3/4" />
-                            <div className="h-32 bg-white/5 rounded-xl w-full" />
-                            <div className="grid grid-cols-2 gap-4">
-                                <div className="h-24 bg-blue-500/10 border border-blue-500/20 rounded-xl" />
-                                <div className="h-24 bg-purple-500/10 border border-purple-500/20 rounded-xl" />
+                        
+                        {/* Mini stat cards row */}
+                        <div className="grid grid-cols-3 gap-3 mb-4">
+                            <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-3 text-center">
+                                <p className="text-2xl font-black text-blue-400">248</p>
+                                <p className="text-[9px] text-slate-500 font-bold uppercase tracking-widest mt-0.5">Students</p>
                             </div>
+                            <div className="bg-purple-500/10 border border-purple-500/20 rounded-xl p-3 text-center">
+                                <p className="text-2xl font-black text-purple-400">12</p>
+                                <p className="text-[9px] text-slate-500 font-bold uppercase tracking-widest mt-0.5">Courses</p>
+                            </div>
+                            <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-3 text-center">
+                                <p className="text-2xl font-black text-emerald-400">94%</p>
+                                <p className="text-[9px] text-slate-500 font-bold uppercase tracking-widest mt-0.5">Attendance</p>
+                            </div>
+                        </div>
+
+                        {/* Mini table */}
+                        <div className="bg-white/[0.02] rounded-xl border border-white/5 overflow-hidden">
+                            <div className="px-4 py-2.5 border-b border-white/5 flex justify-between items-center">
+                                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Recent Activity</span>
+                                <span className="text-[10px] text-blue-400 font-semibold">View All →</span>
+                            </div>
+                            {[
+                                { name: 'Aarav Mehta', subject: 'Data Structures', status: 'present', color: 'emerald' },
+                                { name: 'Priya Sharma', subject: 'Linear Algebra', status: 'present', color: 'emerald' },
+                                { name: 'Rohan Patel', subject: 'DBMS', status: 'absent', color: 'red' },
+                            ].map((row, i) => (
+                                <div key={i} className="px-4 py-2.5 flex items-center justify-between border-b border-white/5 last:border-0">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-7 h-7 rounded-full bg-slate-800 flex items-center justify-center text-[10px] font-bold text-white">{row.name.charAt(0)}</div>
+                                        <div>
+                                            <p className="text-xs font-semibold text-white">{row.name}</p>
+                                            <p className="text-[10px] text-slate-500">{row.subject}</p>
+                                        </div>
+                                    </div>
+                                    <span className={`text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full bg-${row.color}-500/10 text-${row.color}-400`}>{row.status}</span>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>

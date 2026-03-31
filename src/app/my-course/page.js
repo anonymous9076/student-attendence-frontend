@@ -33,7 +33,7 @@ export default function MyCoursePage() {
                             <Layers className="w-3 h-3" />
                             Academic Environment
                         </div>
-                        <h1 className="text-6xl md:text-7xl font-black tracking-tight leading-none bg-gradient-to-br from-white via-white to-slate-500 bg-clip-text text-transparent">
+                        <h1 className="text-6xl md:text-7xl font-black tracking-tight leading-none" style={{ background: 'linear-gradient(to bottom right, #fff, #fff, #64748b)', WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent', color: 'transparent', display: 'inline-block', paddingBottom: '0.1em' }}>
                             Academic Program
                         </h1>
                         <p className="text-slate-400 text-lg font-medium max-w-xl">

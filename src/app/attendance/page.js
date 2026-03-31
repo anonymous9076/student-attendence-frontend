@@ -67,7 +67,7 @@ export default function StudentAttendancePage() {
                             <Clock className="w-3 h-3" />
                             Live Attendance Data
                         </div>
-                        <h1 className="text-6xl font-black tracking-tight leading-none bg-gradient-to-r from-white to-slate-500 bg-clip-text text-transparent">
+                        <h1 className="text-6xl font-black tracking-tight leading-none" style={{ background: 'linear-gradient(to right, #fff, #64748b)', WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent', color: 'transparent', display: 'inline-block', paddingBottom: '0.1em' }}>
                             Academic Presence
                         </h1>
                         <p className="text-slate-400 text-lg font-medium max-w-xl">
@@ -152,8 +152,8 @@ export default function StudentAttendancePage() {
                                         </div>
                                         <div className="w-full bg-slate-900/50 h-3 rounded-full overflow-hidden p-0.5 border border-white/5">
                                             <div
-                                                animate={{ width: `${sub.percentage}%` }}
-                                                className={`h-full rounded-full ${sub.percentage >= 75 ? 'bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.3)]' : 'bg-red-500 shadow-[0_0_15px_rgba(239,68,68,0.3)]'}`}
+                                                style={{ width: `${sub.percentage}%` }}
+                                                className={`h-full rounded-full transition-all duration-700 ${sub.percentage >= 75 ? 'bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.3)]' : 'bg-red-500 shadow-[0_0_15px_rgba(239,68,68,0.3)]'}`}
                                             />
                                         </div>
                                     </div>
