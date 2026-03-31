@@ -30,7 +30,7 @@ export default function StudentDashboard() {
         <div className="space-y-12">
             {/* Profile Header */}
             <motion.div 
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 1, y: 0 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="glass p-8 rounded-[3rem] border border-white/5 relative overflow-hidden"
             >

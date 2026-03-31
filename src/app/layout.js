@@ -22,7 +22,7 @@ import { Toaster } from 'sonner';
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-950 text-white min-h-screen`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-950 text-white min-h-dvh`}>
         <Toaster richColors position="top-right" theme="dark" />
         <Provider store={store}>
           <QueryProvider>

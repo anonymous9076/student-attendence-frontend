@@ -30,13 +30,13 @@ export default function ForgotPasswordPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-slate-950 relative overflow-hidden">
+    <div className="min-h-dvh flex flex-col items-center justify-center p-6 bg-slate-950 relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 blur-3xl rounded-full -mr-64 -mt-64" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-600/10 blur-3xl rounded-full -ml-64 -mb-64" />
 
       <motion.div 
-        initial={{ opacity: 0, scale: 0.95 }}
+        initial={{ opacity: 1, scale: 1 }}
         animate={{ opacity: 1, scale: 1 }}
         className="w-full max-w-md relative z-10"
       >
@@ -53,7 +53,7 @@ export default function ForgotPasswordPage() {
         <div className="glass p-8 rounded-[2.5rem] shadow-2xl relative">
           {success ? (
             <motion.div 
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 1, y: 0 }}
               animate={{ opacity: 1, y: 0 }}
               className="text-center py-4"
             >

@@ -54,7 +54,7 @@ export default function StudentAttendancePage() {
     );
 
     return (
-        <div className="min-h-screen pt-12 pb-24 px-6 bg-slate-950 text-white relative overflow-hidden">
+        <div className="min-h-dvh pt-12 pb-24 px-6 bg-slate-950 text-white relative overflow-hidden">
             {/* Ambient Background */}
             <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-600/5 blur-3xl rounded-full -mr-96 -mt-96" />
             <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-indigo-600/5 blur-3xl rounded-full -ml-96 -mb-96" />
@@ -62,7 +62,7 @@ export default function StudentAttendancePage() {
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* Page Header */}
                 <motion.div 
-                    initial={{ opacity: 0, y: -20 }}
+                    initial={{ opacity: 1, y: 0 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16"
                 >
@@ -128,7 +128,7 @@ export default function StudentAttendancePage() {
                 <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
                     {/* Subject Analysis */}
                     <motion.div 
-                        initial={{ opacity: 0, x: -30 }}
+                        initial={{ opacity: 1, x: 0 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.2 }}
                         className="lg:col-span-2 space-y-8"
@@ -177,7 +177,7 @@ export default function StudentAttendancePage() {
 
                     {/* Attendance Logs */}
                     <motion.div 
-                        initial={{ opacity: 0, x: 30 }}
+                        initial={{ opacity: 1, x: 0 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.3 }}
                         className="lg:col-span-3 space-y-8"
@@ -207,7 +207,7 @@ export default function StudentAttendancePage() {
                                         {history.length > 0 ? (
                                             history.map((record, idx) => (
                                                 <motion.tr 
-                                                    initial={{ opacity: 0 }}
+                                                    initial={{ opacity: 1 }}
                                                     animate={{ opacity: 1 }}
                                                     transition={{ delay: idx * 0.05 }}
                                                     key={idx} 

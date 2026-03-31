@@ -19,7 +19,7 @@ export default function NotificationFeed() {
                     notifications.data.map((n, idx) => (
                         <motion.div
                             key={n._id}
-                            initial={{ opacity: 0, x: -10 }}
+                            initial={{ opacity: 1, x: 0 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: idx * 0.1 }}
                             className="bg-slate-900 border border-white/5 p-5 rounded-3xl hover:border-blue-500/20 transition-all group relative overflow-hidden"

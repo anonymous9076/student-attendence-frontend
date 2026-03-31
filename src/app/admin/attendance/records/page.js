@@ -64,10 +64,10 @@ export default function AttendanceRecordsPage() {
     }, [user, profile, courses, subjects, filters.courseId, filters.subjectId]);
 
     return (
-        <div className="min-h-screen pt-12 pb-24 px-6 bg-slate-950 text-white">
+        <div className="min-h-dvh pt-12 pb-24 px-6 bg-slate-950 text-white">
             <div className="max-w-7xl mx-auto">
                 <motion.div 
-                    initial={{ opacity: 0, y: -20 }}
+                    initial={{ opacity: 1, y: 0 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="mb-12"
                 >
@@ -77,7 +77,7 @@ export default function AttendanceRecordsPage() {
 
                 {/* Filters Section */}
                 <motion.div 
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 1, y: 0 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="glass p-6 rounded-4xl mb-10 grid grid-cols-1 md:grid-cols-4 gap-6 items-end"
                 >
@@ -132,7 +132,7 @@ export default function AttendanceRecordsPage() {
 
                 {/* Table Section */}
                 <motion.div 
-                    initial={{ opacity: 0, scale: 0.98 }}
+                    initial={{ opacity: 1, scale: 1 }}
                     animate={{ opacity: 1, scale: 1 }}
                     className="glass rounded-4xl overflow-hidden"
                 >
@@ -159,7 +159,7 @@ export default function AttendanceRecordsPage() {
                                     attendance?.data?.map((record, idx) => (
                                         <motion.tr 
                                             key={record._id}
-                                            initial={{ opacity: 0, y: 10 }}
+                                            initial={{ opacity: 1, y: 0 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ delay: idx * 0.05 }}
                                             className="group hover:bg-white/2 transition-colors"

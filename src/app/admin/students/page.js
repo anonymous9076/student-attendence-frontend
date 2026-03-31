@@ -73,10 +73,10 @@ export default function StudentListPage() {
   };
 
   return (
-    <div className="min-h-screen pt-12 pb-24 px-6">
+    <div className="min-h-dvh pt-12 pb-24 px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div 
-          initial={{ opacity: 0, x: -20 }}
+          initial={{ opacity: 1, x: 0 }}
           animate={{ opacity: 1, x: 0 }}
           className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6"
         >
@@ -97,7 +97,7 @@ export default function StudentListPage() {
 
         {/* Search Bar */}
         <motion.div 
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 1, y: 0 }}
           animate={{ opacity: 1, y: 0 }}
           className="relative mb-10"
         >
@@ -113,7 +113,7 @@ export default function StudentListPage() {
 
         {/* Table View */}
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 0 }}
           animate={{ opacity: 1, y: 0 }}
           className="glass rounded-[2rem] overflow-hidden"
         >
@@ -131,7 +131,7 @@ export default function StudentListPage() {
                 <AnimatePresence>
                   {filteredStudents?.map((student, idx) => (
                     <motion.tr 
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 1, y: 0 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, scale: 0.95 }}
                       transition={{ delay: idx * 0.05 }}
@@ -201,14 +201,14 @@ export default function StudentListPage() {
         {isEditModalOpen && (
           <div className="fixed inset-0 z-60 flex items-center justify-center p-6">
             <motion.div 
-              initial={{ opacity: 0 }}
+              initial={{ opacity: 1 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsEditModalOpen(false)}
               className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm"
             />
             <motion.div 
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              initial={{ opacity: 1, scale: 1, y: 0 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               className="bg-slate-900 border border-white/10 w-full max-w-lg rounded-[2.5rem] p-8 relative shadow-2xl"

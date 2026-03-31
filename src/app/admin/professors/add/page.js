@@ -47,12 +47,12 @@ export default function AddProfessorPage() {
   };
 
   return (
-    <div className="min-h-screen pt-12 pb-24 px-6 bg-slate-950 relative overflow-hidden">
+    <div className="min-h-dvh pt-12 pb-24 px-6 bg-slate-950 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600/5 blur-3xl rounded-full -mr-64 -mt-64" />
 
       <div className="max-w-4xl mx-auto relative z-10">
         <motion.div 
-          initial={{ opacity: 0, x: -20 }}
+          initial={{ opacity: 1, x: 0 }}
           animate={{ opacity: 1, x: 0 }}
           className="mb-12"
         >
@@ -64,7 +64,7 @@ export default function AddProfessorPage() {
         </motion.div>
 
         <motion.form 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 0 }}
           animate={{ opacity: 1, y: 0 }}
           onSubmit={handleSubmit} 
           className="glass p-10 rounded-[2.5rem] shadow-2xl space-y-10"

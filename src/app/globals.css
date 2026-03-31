@@ -47,6 +47,7 @@
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
     font-feature-settings: "rlig" 1, "calt" 1;
+    overscroll-behavior-y: none;
   }
 }
 
@@ -70,6 +71,7 @@
 .gradient-text {
   background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -88,4 +90,36 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--accent));
+}
+
+/* iOS Optimization: Prevent automatic zooming on input focus */
+@media screen and (max-width: 640px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* iOS Safari: bg-clip-text + text-transparent fix */
+/* Tailwind's text-transparent sets color:transparent but Safari needs -webkit-text-fill-color */
+.bg-clip-text {
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* iOS Safari: Ensure backdrop-filter always has -webkit- prefix */
+.glass, [class*="backdrop-blur"] {
+  backdrop-filter: var(--tw-backdrop-blur, blur(12px));
+  -webkit-backdrop-filter: var(--tw-backdrop-blur, blur(12px));
+}
+
+/* iOS Safari: Prevent text from being clipped or hidden due to overflow/transform bugs */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* iOS: Make sure all framer motion animated elements are visible if JS fails */
+[data-framer-component-type], .framer-motion-placeholder {
+  opacity: 1 !important;
 }

@@ -21,13 +21,13 @@ export default function MyCoursePage() {
     if (loadingProfile || loadingSubjects) return <div className="flex items-center justify-center h-[70vh]"><Loader /></div>;
 
     return (
-        <div className="min-h-screen pt-12 pb-24 px-6 bg-slate-950 text-white relative overflow-hidden font-sans">
+        <div className="min-h-dvh pt-12 pb-24 px-6 bg-slate-950 text-white relative overflow-hidden font-sans">
             <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-blue-600/5 blur-3xl rounded-full -ml-96 -mt-96" />
             <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-indigo-600/5 blur-3xl rounded-full -mr-96 -mb-96" />
 
             <div className="max-w-7xl mx-auto relative z-10">
                 <motion.div 
-                    initial={{ opacity: 0, y: -20 }}
+                    initial={{ opacity: 1, y: 0 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="flex flex-col md:flex-row md:items-end justify-between items-start gap-10 mb-16"
                 >
@@ -58,7 +58,7 @@ export default function MyCoursePage() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                     <motion.div 
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 1, y: 0 }}
                         animate={{ opacity: 1, y: 0 }}
                         className="lg:col-span-8 flex flex-col gap-8"
                     >
@@ -126,7 +126,7 @@ export default function MyCoursePage() {
                                 {subjects.length > 0 ? subjects.map((sub, idx) => (
                                     <motion.div 
                                         key={sub._id}
-                                        initial={{ opacity: 0, scale: 0.95 }}
+                                        initial={{ opacity: 1, scale: 1 }}
                                         animate={{ opacity: 1, scale: 1 }}
                                         transition={{ delay: idx * 0.05 }}
                                         className="glass p-7 rounded-[2.5rem] border border-white/5 hover:bg-white/[0.03] hover:border-white/10 transition-all group/sub cursor-default"
@@ -158,7 +158,7 @@ export default function MyCoursePage() {
                     </motion.div>
 
                     <motion.div 
-                        initial={{ opacity: 0, x: 20 }}
+                        initial={{ opacity: 1, x: 0 }}
                         animate={{ opacity: 1, x: 0 }}
                         className="lg:col-span-4 space-y-8"
                     >

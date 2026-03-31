@@ -30,7 +30,7 @@ export default function Home() {
   const { user, isAuthenticated, isHydrated } = useSelector((state) => state.auth);
 
   return (
-    <div className="min-h-screen bg-slate-950 overflow-hidden text-slate-300">
+    <div className="min-h-dvh bg-slate-950 overflow-hidden text-slate-300">
       {/* Dynamic Background */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
           <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-blue-600/20 blur-3xl rounded-full" />

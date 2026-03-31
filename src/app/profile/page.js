@@ -36,7 +36,7 @@ export default function ProfilePage() {
   );
 
   return (
-    <div className="min-h-screen pt-12 pb-24 px-6 bg-slate-950 relative overflow-hidden">
+    <div className="min-h-dvh pt-12 pb-24 px-6 bg-slate-950 relative overflow-hidden">
       {/* Dynamic Background */}
       <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-blue-600/5 blur-3xl rounded-full -mt-96 animate-pulse" />
       <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-purple-600/5 blur-3xl rounded-full -mb-96" />
@@ -44,7 +44,7 @@ export default function ProfilePage() {
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Header Section */}
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 0 }}
           animate={{ opacity: 1, y: 0 }}
           className="flex flex-col md:flex-row items-center gap-10 mb-16 px-4"
         >
@@ -136,7 +136,7 @@ export default function ProfilePage() {
 
         {/* Notice Section */}
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 1, y: 0 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
           className="mt-12 glass p-10 rounded-[3rem] border-white/5 relative group"

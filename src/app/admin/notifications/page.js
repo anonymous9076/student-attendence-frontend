@@ -75,16 +75,16 @@ export default function NotificationManagement() {
     };
 
     return (
-        <div className="min-h-screen pt-12 pb-24 px-6 bg-slate-950 text-white">
+        <div className="min-h-dvh pt-12 pb-24 px-6 bg-slate-950 text-white">
             <div className="max-w-6xl mx-auto">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
-                    <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
+                    <motion.div initial={{ opacity: 1, x: 0 }} animate={{ opacity: 1, x: 0 }}>
                         <h1 className="text-4xl font-extrabold tracking-tight mb-2">Announcements</h1>
                         <p className="text-slate-400 font-medium">Broadcast updates and alerts to the student body</p>
                     </motion.div>
 
                     <motion.button
-                        initial={{ opacity: 0, x: 20 }}
+                        initial={{ opacity: 1, x: 0 }}
                         animate={{ opacity: 1, x: 0 }}
                         onClick={() => setIsModalOpen(true)}
                         className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-2xl font-bold transition-all shadow-lg shadow-blue-500/20 active:scale-95"
@@ -104,7 +104,7 @@ export default function NotificationManagement() {
                         notifications?.data?.map((n, idx) => (
                             <motion.div 
                                 key={n._id}
-                                initial={{ opacity: 0, y: 10 }}
+                                initial={{ opacity: 1, y: 0 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: idx * 0.05 }}
                                 className="glass p-6 rounded-3xl border border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-white/10 transition-colors group"
@@ -148,12 +148,12 @@ export default function NotificationManagement() {
                     {isModalOpen && (
                         <div className="fixed inset-0 z-60 flex items-center justify-center p-6">
                             <motion.div 
-                                initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                                initial={{ opacity: 1 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                                 onClick={() => setIsModalOpen(false)}
                                 className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm"
                             />
                             <motion.div 
-                                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                                initial={{ opacity: 1, scale: 1, y: 0 }}
                                 animate={{ opacity: 1, scale: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
                                 className="bg-slate-900 border border-white/10 w-full max-w-xl rounded-[2.5rem] p-8 relative shadow-2xl"

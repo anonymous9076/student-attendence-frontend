@@ -108,10 +108,10 @@ export default function MarkAttendancePage() {
     };
 
     return (
-        <div className="min-h-screen pt-12 pb-24 px-6 bg-slate-950">
+        <div className="min-h-dvh pt-12 pb-24 px-6 bg-slate-950">
             <div className="max-w-6xl mx-auto">
                 <motion.div 
-                    initial={{ opacity: 0, y: -20 }}
+                    initial={{ opacity: 1, y: 0 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="mb-12"
                 >
@@ -122,7 +122,7 @@ export default function MarkAttendancePage() {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Selectors Panel */}
                     <motion.div 
-                        initial={{ opacity: 0, x: -20 }}
+                        initial={{ opacity: 1, x: 0 }}
                         animate={{ opacity: 1, x: 0 }}
                         className="glass p-8 rounded-4xl h-fit sticky top-12"
                     >
@@ -181,7 +181,7 @@ export default function MarkAttendancePage() {
 
                     {/* Students List */}
                     <motion.div 
-                        initial={{ opacity: 0, x: 20 }}
+                        initial={{ opacity: 1, x: 0 }}
                         animate={{ opacity: 1, x: 0 }}
                         className="lg:col-span-2"
                     >
@@ -209,7 +209,7 @@ export default function MarkAttendancePage() {
                                         {filteredStudents?.map((student, idx) => (
                                             <motion.div 
                                                 layout
-                                                initial={{ opacity: 0, x: 10 }}
+                                                initial={{ opacity: 1, x: 0 }}
                                                 animate={{ opacity: 1, x: 0 }}
                                                 exit={{ opacity: 0, scale: 0.95 }}
                                                 key={student._id}
